@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jardín Botánico 🌿</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #26cbec;
+      position: relative;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    header {
+      background-color: #169af2;
+      color: rgb(24, 248, 207);
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #2cef35;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: rgb(189, 222, 57);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+      background: #45d7d0cc;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label, textarea, input {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    input, textarea {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      margin-top: 15px;
+      background: #3bc13f;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #501fe3;
+    }
+    @media (max-width: 768px) {
+      nav a { display: block; margin: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="fondo"></canvas>
+
+<header>
+  <h1>Jardín Botánico 🌿</h1>
+</header>
+</h2>Bienvenid@ a jardin-botanico donde te puedes informar de algunas Actividades que se realizan acontinuacion se te hablara un poco de lo que es un jardin-botanico:<h2>
+
+<div class="container">
+  <section>
+    <h2>¿Qué es un Jardín Botánico?🌳</h2>
+    <p>Un jardín botánico es un espacio diseñado para la conservación, estudio y exhibición de diferentes especies vegetales. Estos lugares ofrecen un entorno educativo y recreativo donde las personas pueden aprender sobre la biodiversidad y la importancia del medio ambiente.</p>
+    <img src="jardin-botanico-cupaynic-bayamo.jpg" alt="Jardín Botánico">
+  </section>
+
+  <section>
+    <h2>Beneficios del Jardín Botánico🌳</h2>
+    <ul>
+      <li>Conservación de especies vegetales</li>
+      <li>Educación ambiental para todas las edades</li>
+      <li>Investigación científica sobre flora</li>
+      <li>Espacio de relajación y contacto con la naturaleza</li>
+    </ul>
+    <img src="descubre-los-increibles-beneficios-de-un-jardin-botanico-para-tu-bienestar-y-el-medio-ambiente.jpg" alt="Beneficios de un Jardín Botánico">
+  </section>
+
+  <section>
+    <h2>Tipos de Plantas🌳</h2>
+    <ul>
+      <li>🌳 Árboles nativos y exóticos</li>
+      <li>🌵 Plantas desérticas y suculentas</li>
+      <li>🌿 Plantas medicinales y aromáticas</li>
+      <li>🌷 Especies florales ornamentales</li>
+    </ul>
+    <img src="Imagen3-Interna.jpg" alt="Tipos de Plantas">
+  </section>
+
+  <section>
+    <h2>Importancia del Jardín Botánico🌳</h2>
+    <p>Estos espacios ayudan a sensibilizar a las personas sobre la importancia de conservar la naturaleza. Además, permiten investigar especies en peligro de extinción y educar sobre el impacto del cambio climático en la flora mundial.</p>
+  </section>
+
+  <section>
+    <h2>Actividades en el Jardín Botánico🌳</h2>
+    <ul>
+      <li>Visitas guiadas educativas</li>
+      <li>Fotografía de naturaleza</li>
+      <li>Talleres de jardinería y compostaje</li>
+      <li>Senderismo y observación de aves</li>
+    </ul>
+    <img src="Imagen3-Interna.jpg" alt="Actividades en el Jardín">
+  </section>
+<h1>Contestas este formulario con lo que te parecio el jardin-botanico ☺️🌳</h1>
+  <section>
+    <h2>¿Qué te pareció la información presentada?</h2>
+    <form>
+      <label for="nombre">Tu nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="comentario">Comentario:</label>
+      <textarea id="comentario" name="comentario" rows="4" required></textarea>
+
+      <button type="submit">Enviar opinión</button>
+    </form>
+  </section>
+</div>
+
+<script>
+  const canvas = document.getElementById("fondo");
+  const ctx = canvas.getContext("2d");
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+
+  const emojis = ["🌿", "🌱"];
+  const hojas = [];
+
+  function crearEmojis(num) {
+    for (let i = 0; i < num; i++) {
+      hojas.push({
+        emoji: emojis[Math.floor(Math.random() * emojis.length)],
+        x: Math.random() * width,
+        y: Math.random() * height,
+        size: Math.random() * 30 + 20,
+        speedY: Math.random() * 0.5 + 0.2,
+        speedX: Math.random() * 0.5 - 0.25,
+      });
+    }
+  }
+
+  function animar() {
+    ctx.clearRect(0, 0, width, height);
+    ctx.font = "30px serif";
+    hojas.forEach((hoja) => {
+      ctx.font = hoja.size + "px serif";
+      ctx.fillText(hoja.emoji, hoja.x, hoja.y);
+      hoja.y += hoja.speedY;
+      hoja.x += hoja.speedX;
+      if (hoja.y > height) {
+        hoja.y = -20;
+        hoja.x = Math.random() * width;
+      }
+    });
+    requestAnimationFrame(animar);
+  }
+
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+
+  crearEmojis(40);
+  animar();
+</script>
+
+</body>
+</html>
